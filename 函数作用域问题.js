@@ -4,7 +4,7 @@ function q1() {
     const a = 1
     function foo() {
         const a = 2
-        return function() {
+        return function () {
             console.log(a)
         }
     }
@@ -17,11 +17,17 @@ function q1() {
     run()
 }
 
+/**
+ * 答案：
+ * 2
+ * run is not a function
+ */
+
 // 变形
 function q2() {
     const a = 1
     function foo() {
-        return function() {
+        return function () {
             console.log(a)
         }
     }
@@ -33,3 +39,8 @@ function q2() {
     const run = bar()
     run()
 }
+
+/**
+ * 答案：
+ * 1
+ */

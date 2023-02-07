@@ -38,7 +38,9 @@ function ans(obj, target) {
             }
             if (typeof val !== 'object') continue // 不是object类型
             if (val === null) continue // null特殊情况
-            if (Object.getPrototypeOf(o) !== Object.getPrototypeOf(val)) continue // 不是plain object
+            if (!Object.getPrototypeOf(val) && Object.getPrototypeOf(o) !== Object.getPrototypeOf(val)) continue // 不是plain object
+            // Object.create(null) -> {}
+            // Object.getPrototypeof(Object.create(null)) -> null
             const res = find(val, target, [...path, key])
             if (!res) continue
             return res

@@ -18,3 +18,13 @@ function mid(root) {
 }
 
 // Q2 celine 23.2.13
+// leetcode https://leetcode.cn/problems/shuffle-an-array/description/?orderBy=hot
+Solution.prototype.shuffle = function () {
+    for (let i = 0; i < this.nums.length; i++) {
+        const target = Math.floor(Math.random() * (this.nums.length - i)) + i;
+        const temp = this.nums[i];
+        this.nums[i] = this.nums[target];
+        this.nums[target] = temp;
+    }
+    return this.nums
+};

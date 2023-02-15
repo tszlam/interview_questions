@@ -19,3 +19,10 @@ Promise.resolve().then(function() {
 })
 
 console.log('script start')
+
+// script end
+// script start
+// Promise resolve3
+// setTimeout1
+// Promise resolve1
+// Promise resolve2

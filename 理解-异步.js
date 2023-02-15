@@ -11,3 +11,10 @@ new Promise(function(resolve) {
     console.log('Promise then')
 })
 console.log('script end')
+
+// script start
+// Promise1
+// Promise2
+// script end
+// Promise then
+// setTimeout

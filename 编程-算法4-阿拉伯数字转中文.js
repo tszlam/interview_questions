@@ -7,7 +7,7 @@
  */
 
 const numberToChinese = (num) => {
-    const char = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
+    const char = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
     const unit = ['', '十', '百', '千'];
     const section = ['万', '亿'];
     let base = 0;
@@ -43,5 +43,5 @@ const numberToChinese = (num) => {
     return result.reverse().join('');
 }
 
-const number = 1000011010002;
+const number = 10;
 console.log(numberToChinese(number));

@@ -6,15 +6,15 @@ async function asyncPool(tasks, max) {
     const result = [];
     const pool = new Set();
     for (let i = 0; i < tasks.length; i++) {
-        const fetchTask = tasks[i];
+        const fetchTask = tasks[i]();
         pool.add(fetchTask);
         result.push(fetchTask);
-        fetchTask().then(() => {
+        fetchTask.then(() => {
             pool.delete(fetchTask);
         });
 
-        if (pool.length >= max) {
-            await Promise.race();
+        if (pool.size >= max) {
+            await Promise.race(pool);
         }
     }
     return await Promise.all(result);

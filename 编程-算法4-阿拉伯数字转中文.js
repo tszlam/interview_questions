@@ -1,9 +1,9 @@
 // 将阿拉伯数字转为中文描述
 
-// celine 23.4.25
+// celine 23.5.7
 /**
  * 中文一个section中间是 零，十，百，千
- * section范围 万，亿
+ * section范围 万，亿, 测试范围亿亿
  */
 
 const numberToChinese = (num) => {
@@ -25,12 +25,15 @@ const numberToChinese = (num) => {
         } else {
             //不为0才推入
             //处理超过千的情况
-            if (base >= 4) {
+            while (base >= 4) {
+                // 每4组base需要推一个section
                 const sectionCn = section[baseSection++];
                 result.push(sectionCn);
-                //还原到千位内处理, 对4取模
-                base = base % 4;
+                //还原到千位内处理, 减4
+                base = base - 4;
+                if (baseSection > 1) baseSection = 0
             }
+
             // 处理unit单位
             const baseCn = unit[base];
             result.push(baseCn)
@@ -43,5 +46,5 @@ const numberToChinese = (num) => {
     return result.reverse().join('');
 }
 
-const number = 10;
-console.log(numberToChinese(number));
+console.log(numberToChinese(1000_1000_0000_0002));
+console.log(numberToChinese(12390002));

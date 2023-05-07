@@ -25,12 +25,15 @@ const numberToChinese = (num) => {
         } else {
             //不为0才推入
             //处理超过千的情况
-            while (base >= 4) {
+            if (base >= 4) {
                 // 每4组base需要推一个section
+                if (base >= 8) {
+                    baseSection = Math.floor(base / 8);
+                }
                 const sectionCn = section[baseSection++];
                 result.push(sectionCn);
                 //还原到千位内处理, 减4
-                base = base - 4;
+                base = base % 4;
                 if (baseSection > 1) baseSection = 0
             }
 
@@ -46,5 +49,5 @@ const numberToChinese = (num) => {
     return result.reverse().join('');
 }
 
-console.log(numberToChinese(1000_1000_0000_0002));
-console.log(numberToChinese(12390002));
+console.log(numberToChinese(1000_1000_1000_0002));
+console.log(numberToChinese(101_1000_0002));
